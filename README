@@ -1,0 +1,1 @@
+required libraries: OpenCV 3, Boost, wiringPi(optional)
