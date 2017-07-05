@@ -258,14 +258,6 @@ void readIMUdata(Quaternion* q, VectorInt16* accel, VectorInt16* gyro, VectorInt
      * for eliminate gyro bias. IMU sample rate is about 500Hz, so we can run about 3000 cycles in 6 seconds,
      */
 
-    /*
-    while(setupRdy==false){} //wait for the IMU setup to complete.
-    //usleep(1200000);
-        sendMsg(sock, "strat calibration...\n");
-        sendMsg(sock, " 0%\n");
-        calibration(sock, accel, gyro);
-        sendMsg(sock, "calibration done.\t\n");
-    */
     while(setupRdy==false){} //wait for the IMU setup to complete.
     while(true){
 
@@ -487,7 +479,6 @@ int main(){
     VectorInt16 magneto;
     VectorFloat gravity;
 
-    //cv::VideoCapture cap("/home/pi/Desktop/bike.mp4");
     cam_t cam;
     double w,h,fps;
     int chn;
@@ -623,20 +614,14 @@ int main(){
         //D_e_H = (e_H - prev_e_H)/dt;
         //u1 = Kp_H*e_H + Ki_H*I_e_H + Kd_H*D_e_H;
         u1 = desired_H;
+            
         // roll part
-        //I_e_roll += e_roll*dt;
-        //D_e_roll = (e_roll - prev_e_roll)/dt;
-        //u2 = Kp_roll*e_roll + Ki_roll*I_e_roll + Kd_roll*D_e_roll;
         u2 = pidCal(Kp_roll, Ki_roll, Kd_roll ,e_roll, prev_e_roll, dt, roll_I_term, pid_saturator, -pid_saturator);
+            
         //pitch part
-        //I_e_pitch += e_pitch*dt;
-        //D_e_pitch = (e_pitch - prev_e_pitch)/dt;
-        //u3 = Kp_pitch*e_pitch + Ki_pitch*I_e_pitch + Kd_pitch*D_e_pitch;
         u3 = pidCal(Kp_pitch, Ki_pitch, Kd_pitch, e_pitch, prev_e_pitch, dt, pitch_I_term, pid_saturator, -pid_saturator);
+            
         //yaw angular velocity (Wz) part
-        //I_e_Wz += e_Wz*dt;
-        //D_e_Wz = (e_Wz - prev_e_Wz)/dt;
-        //u4 = Kp_Wz*e_Wz + Ki_Wz*I_e_Wz + Kd_Wz*D_e_Wz;
         u4 = pidCal(Kp_Wz, Ki_Wz, Kd_Wz, e_Wz, prev_e_Wz, dt, Wz_I_term, pid_saturator, -pid_saturator);
 
         prev_e_H = e_H;
@@ -674,7 +659,6 @@ int main(){
         motor_RL(mtRL);
         motor_RR(mtRR);
         //usleep(5000);
-
     }
 
 }
