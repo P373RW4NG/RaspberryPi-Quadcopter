@@ -65,7 +65,7 @@ private:
     void sendKvalues();
     void recVid();
     int p=0;
-    int idx[3]={0, 0, 0}; // state: loop, vid, lock
+    int idx[5]={0, 0, 0, 0, 0}; // state: loop, vid, lock, body detection, face detection
     double fps;
     cv::Mat frame = cv::Mat::zeros(360, 480, CV_8UC3);
     cv::Mat gyroFig = cv::Mat::zeros(130, 130, CV_8UC3);
@@ -84,13 +84,16 @@ private:
     std::vector<std::string> strs;
     void loadSettings();
 
-    // face detection
+    // detection data
+    std::string body_cascade_name ="/Users/Peter/OpenCV/opencv-3.2.0/data/haarcascades/haarcascade_fullbody.xml";
     std::string face_cascade_name = "/Users/Peter/OpenCV/opencv-3.2.0/data/haarcascades/haarcascade_frontalface_alt.xml";
     std::string eyes_cascade_name = "/Users/Peter/OpenCV/opencv-3.2.0/data/haarcascades/haarcascade_eye_tree_eyeglasses.xml";
 
+    cv::CascadeClassifier body_cascade;
     cv::CascadeClassifier face_cascade;
     cv::CascadeClassifier eyes_cascade;
 
+    void cascadeBodyDetection();
     void cascadeFaceDetection();
 
 signals:
@@ -138,6 +141,8 @@ private slots:
     void setLock();
     void saveSettings();
     void detln();
+    void on_faceButton_clicked();
+    void on_bodyButton_clicked();
 };
 
 #endif // MAINWINDOW_H
