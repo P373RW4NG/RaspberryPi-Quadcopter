@@ -20,7 +20,8 @@ MainWindow::MainWindow(QWidget *parent) :
     //vid_sock.connect(vid_ep);
     ui->setupUi(this);
 
-    ui->gyro->setPixmap(QPixmap::fromImage(QImage((const unsigned char*)(gyroFig.data), gyroFig.cols, gyroFig.rows, QImage::Format_RGB888)));
+    //ui->gyro->setPixmap(QPixmap::fromImage(QImage((const unsigned char*)(gyroFig.data), gyroFig.cols, gyroFig.rows, QImage::Format_RGB888)));
+    ui->vidLabel->setPixmap(QPixmap::fromImage(QImage((const unsigned char*)(frame.data), frame.cols, frame.rows, QImage::Format_RGB888)));
     connect(ui->connectButton, &QPushButton::clicked, this, &MainWindow::setText1 );
     connect(ui->connectButton, &QPushButton::clicked, this, &MainWindow::sockConnection);
     connect(ui->vidButton, &QPushButton::clicked, this, &MainWindow::setText2 );
@@ -28,6 +29,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->saveButton, &QPushButton::clicked, this, &MainWindow::saveSettings );
     loadSettings();
 
+    if(!body_cascade.load(body_cascade_name)){
+        std::cout<<"error: body loading failed"<<std::endl;
+    }
     if(!face_cascade.load(face_cascade_name)){
         std::cout<<"error: face loading failed"<<std::endl;
     }
@@ -91,6 +95,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(this, &MainWindow::getYaw, this, &MainWindow::setYaw);
     connect(this, &MainWindow::getPitch, this, &MainWindow::setPitch);
     connect(this, &MainWindow::getRoll, this, &MainWindow::setRoll);
+
+    roll=0, pitch=0;
+    gyroPlot();
 
 
 /*
@@ -353,7 +360,12 @@ void MainWindow::recVid()
             frame=cv::imdecode(cv::Mat(vid_buff), CV_LOAD_IMAGE_COLOR );
             cv::flip(frame, frame, 0);
             cv::flip(frame, frame, 1);
-            cascadeFaceDetection();
+            if(idx[3]==1){
+                cascadeBodyDetection();
+            }
+            if(idx[4]==1){
+                cascadeFaceDetection();
+            }
             cv::cvtColor(frame, frame, CV_BGR2RGB);
             Qimg=QImage((const unsigned char*)(frame.data), frame.cols, frame.rows, QImage::Format_RGB888);
             emit showImg(QPixmap::fromImage(Qimg));
@@ -375,7 +387,7 @@ void MainWindow::gyroPlot()
         //ball
         //cv::line(frame, cv::Point(center_x-(r0*cos( ((pitch/(30*M_PI/180))*(asin(45/r0)))+roll )), center_y-(r0*sin(((pitch/(30*M_PI/180))*(asin(45/r0)))+roll))), cv::Point(center_x+(r0*cos(((pitch/(30*M_PI/180))*(asin(45/r0)))-roll)), center_y-(r0*sin(((pitch/(30*M_PI/180))*(asin(45/r0)))-roll))), cv::Scalar(255,255,255), 2);
         //cv::line(frame, cv::Point(center_x-(r0*cos( pitch+roll )), center_y-(r0*sin(pitch+roll))), cv::Point(center_x+(r0*cos(pitch-roll)), center_y-(r0*sin(pitch-roll))), cv::Scalar(255,255,255), 2);
-        cv::line(gyroFig, cv::Point(center_x-(r0*cos( (gs*pitch)+roll )), center_y-(r0*sin((gs*pitch)+roll))), cv::Point(center_x+(r0*cos((gs*pitch)-roll)), center_y-(r0*sin((gs*pitch)-roll))), cv::Scalar(0,200,150), 2);
+        cv::line(gyroFig, cv::Point(center_x-(r0*cos( (gs*-pitch)+roll )), center_y-(r0*sin((gs*-pitch)+roll))), cv::Point(center_x+(r0*cos((gs*-pitch)-roll)), center_y-(r0*sin((gs*-pitch)-roll))), cv::Scalar(0,200,150), 2);
         cv::line(gyroFig, cv::Point(center_x-(r0*cos( roll - M_PI/2 )), center_y-(r0*sin(roll - M_PI/2))), cv::Point(center_x-((r0-15)*cos(roll-M_PI/2)), center_y-((r0-15)*sin( roll-M_PI/2))), cv::Scalar(255,200,0), 2);
         cv::line(gyroFig, cv::Point(center_x-(r0*cos( roll - 100*M_PI/180 )), center_y-(r0*sin(roll - 100*M_PI/180))), cv::Point(center_x-((r0-10)*cos(roll - 100*M_PI/180)), center_y-((r0-10)*sin( roll - 100*M_PI/180 ))), cv::Scalar(0,200,150), 2);
         cv::line(gyroFig, cv::Point(center_x-(r0*cos( roll - 110*M_PI/180 )), center_y-(r0*sin(roll - 110*M_PI/180))), cv::Point(center_x-((r0-10)*cos(roll - 110*M_PI/180)), center_y-((r0-10)*sin( roll - 110*M_PI/180 ))), cv::Scalar(0,200,150), 2);
@@ -396,11 +408,11 @@ void MainWindow::gyroPlot()
         cv::putText(gyroFig, std::string("30"), cv::Point(center_x-((r0-15)*cos(roll + 56*M_PI/180)), center_y-((r0-15)*sin( roll + 56*M_PI/180 ))), 0, 0.2, cv::Scalar(255,255,255),1);
 
         cv::line(gyroFig, cv::Point(center_x-10, center_y- (r0*sin(gs*10*M_PI/180)) ), cv::Point(center_x+10, center_y-(r0*sin(gs*10*M_PI/180)) ), cv::Scalar(255,255,255), 1);
-        cv::putText(gyroFig, std::string("10"), cv::Point(center_x+14, center_y-(r0*sin(gs*10*M_PI/180)-2) ), 0, 0.2, cv::Scalar(255,255,255),1);
+        cv::putText(gyroFig, std::string("10"), cv::Point(center_x+14, center_y+(r0*sin(gs*10*M_PI/180)-2) ), 0, 0.2, cv::Scalar(255,255,255),1);
         cv::line(gyroFig, cv::Point(center_x-12, center_y- (r0*sin(gs*20*M_PI/180)) ), cv::Point(center_x+12, center_y-(r0*sin(gs*20*M_PI/180)) ), cv::Scalar(255,255,255), 1);
-        cv::putText(gyroFig, std::string("20"), cv::Point(center_x+16, center_y-(r0*sin(gs*20*M_PI/180)-2) ), 0, 0.2, cv::Scalar(255,255,255),1);
+        cv::putText(gyroFig, std::string("20"), cv::Point(center_x+16, center_y+(r0*sin(gs*20*M_PI/180)-2) ), 0, 0.2, cv::Scalar(255,255,255),1);
         cv::line(gyroFig, cv::Point(center_x-16, center_y- (r0*sin(gs*30*M_PI/180)) ), cv::Point(center_x+15, center_y-(r0*sin(gs*30*M_PI/180)) ), cv::Scalar(255,255,255), 1);
-        cv::putText(gyroFig, std::string("30"), cv::Point(center_x+19, center_y-(r0*sin(gs*30*M_PI/180)-2) ), 0, 0.2, cv::Scalar(255,255,255),1);
+        cv::putText(gyroFig, std::string("30"), cv::Point(center_x+19, center_y+(r0*sin(gs*30*M_PI/180)-2) ), 0, 0.2, cv::Scalar(255,255,255),1);
 
         cv::line(gyroFig, cv::Point(center_x-10, center_y+ (r0*sin(gs*10*M_PI/180)) ), cv::Point(center_x+10, center_y+(r0*sin(gs*10*M_PI/180)) ), cv::Scalar(255,255,255), 1);
         cv::line(gyroFig, cv::Point(center_x-12, center_y+ (r0*sin(gs*20*M_PI/180)) ), cv::Point(center_x+12, center_y+(r0*sin(gs*20*M_PI/180)) ), cv::Scalar(255,255,255), 1);
@@ -442,6 +454,30 @@ void MainWindow::loadSettings()
     log.close();
 }
 
+void MainWindow::cascadeBodyDetection()
+{
+    std::vector<cv::Rect> bodies;
+    cv::Mat frame_gray;
+    std::vector<cv::Point> contour;
+
+    cv::cvtColor(frame, frame_gray, CV_BGR2GRAY);
+    cv::equalizeHist(frame_gray, frame_gray);
+
+    body_cascade.detectMultiScale(frame_gray, bodies, 1.1, 2, 0 | cv::CASCADE_SCALE_IMAGE, cv::Size(30, 30));
+
+    for(size_t i=0; i<bodies.size(); i++){
+        /*
+        cv::Point center(faces[i].x + faces[i].width/2, faces[i].y + faces[i].height/2 );
+        cv::ellipse(frame, center, cv::Size(faces[i].width/2, faces[i].height/2), 0, 0, 360, cv::Scalar(255, 0, 255), 4, 8, 0);
+         */
+        cv::rectangle(frame, bodies[i], cv::Scalar(0, 200, 255), 2);
+        std::stringstream ss;
+        ss<<i;
+        cv::putText(frame, ss.str(),  cv::Point(bodies[i].x+bodies[i].width+5, bodies[i].y), 2, 0.5, cv::Scalar(30, 200, 255), 1);
+        //printf("plot on body, body size %d.........\n", bodies.size());
+    }
+}
+
 void MainWindow::cascadeFaceDetection()
 {
     std::vector<cv::Rect> faces;
@@ -466,7 +502,10 @@ void MainWindow::cascadeFaceDetection()
         cv::ellipse(frame, center, cv::Size(faces[i].width/2, faces[i].height/2), 0, 0, 360, cv::Scalar(255, 0, 255), 4, 8, 0);
          */
         cv::rectangle(frame, faces[i], cv::Scalar(0, 255, 0), 2);
-        printf("plot on face, face size %d.........\n", faces.size());
+        std::stringstream ss;
+        ss<<i;
+        cv::putText(frame, ss.str(),  cv::Point(faces[i].x+faces[i].width+5, faces[i].y), 2, 0.5, cv::Scalar(30, 200, 0), 1);
+        //printf("plot on face, face size %d.........\n", faces.size());
 
         /* eye detection
         cv::Mat faceROI = frame_gray(faces[i]);
@@ -528,11 +567,11 @@ void MainWindow::setText1()
 
 void MainWindow::setText2()
 {
-    if(ui->vidButton->text()=="Start Video stream"){
+    if(ui->vidButton->text()=="Receive Video"){
         ui->vidButton->setText("Stop Video stream");
         keyHold[6]='1';
     }else if(ui->vidButton->text()=="Stop Video stream"){
-        ui->vidButton->setText("Start Video stream");
+        ui->vidButton->setText("Receive Video");
         keyHold[6]='0';
     }
 }
@@ -696,3 +735,29 @@ void MainWindow::setMz(int v)
 }
 
 
+
+void MainWindow::on_faceButton_clicked()
+{
+    idx[4] = (idx[4]==1)? 0:1;
+    switch (idx[4]) {
+    case 0:
+        ui->textBrowser->append("face detection : OFF");
+        break;
+    case 1:
+        ui->textBrowser->append("face detection : ON");
+        break;
+    }
+}
+
+void MainWindow::on_bodyButton_clicked()
+{
+    idx[3] = (idx[3]==1)? 0:1;
+    switch (idx[3]) {
+    case 0:
+        ui->textBrowser->append("body detection : OFF");
+        break;
+    case 1:
+        ui->textBrowser->append("body detection : ON");
+        break;
+    }
+}
