@@ -19,9 +19,9 @@ uint8_t pin_rr=15;
 //macro
 const uint16_t th_min = 819;  // no thrust
 const uint16_t th_max = 1800; //1638
-uint16_t h_inc = 2;  // increasement of height
+uint16_t h_inc = 1;  // increasement of height
 //uint16_t th_stack = th_min;
-uint16_t inc0 = 20;  // tilt increasement
+uint16_t inc0 = 2;  // tilt increasement
 int16_t mtFRinc, mtFLinc, mtRRinc, mtRLinc;
 
 PCA9685 pwmCtrl;
@@ -30,6 +30,9 @@ extern float pid_saturator;
 extern float pid_roll_max;
 extern float pid_roll_min;
 extern bool flightState;
+extern const float Ixx;
+extern const float Iyy;
+extern const float Izz;
 
 float pidLimit(float v, float u, float d){
     if(u==0 && d==0){
@@ -62,6 +65,103 @@ float pidCal(float kp, float ki, float kd, float e, float prev_e, float dt, floa
     //I_term *= ki;
     D_term = kd*(e - prev_e)/dt;
     output = P_term + I_term + D_term;
+    output = pidLimit(output, pid_roll_max, pid_roll_min);
+    return output;
+}
+
+float pidCal_v2(float kp, float ki, float kd, float e, float prev_e, float dt, float &I_term,float sat_u, float sat_l){ //without considering dt
+    float output;
+    float P_term, D_term;
+
+    P_term = kp*e;
+    if(flightState){
+        I_term += ki*e;  // first, I_term use as integration part, then multiple ki become I_term
+    }else if(!flightState){
+        I_term = 0;
+        return 0;
+    }
+    if(sat_u!=0 && sat_l!=0){
+        if(I_term > sat_u){ I_term = sat_u; }
+        else if(I_term < sat_l){ I_term = sat_l;}
+    }
+    //I_term *= ki;
+    D_term = kd*(e - prev_e);
+    output = P_term + I_term + D_term;
+    output = pidLimit(output, pid_roll_max, pid_roll_min);
+    return output;
+}
+
+float RollPIDCal(float kp, float ki, float kd, float e, float prev_e, float dr, float dt, float &I_term,float sat_u = 0, float sat_l = 0){
+    float output;
+    float P_term, D_term;
+
+    P_term = kp*e;
+
+    if(flightState){
+        I_term += ki*e*dt;  // first, I_term use as integration part, then multiple ki become I_term
+    }else if(!flightState){
+        I_term = 0;
+        return 0;
+    }
+
+    if(sat_u!=0 || sat_l!=0){ //had set sat_u or sat_l, zero = not specified.
+        if(I_term > sat_u){ I_term = sat_u; }
+        else if(I_term < sat_l){ I_term = sat_l;}
+    }
+
+    //I_term *= ki;
+    D_term = kd*dr/dt;
+    output = Ixx*(P_term + I_term - D_term);
+    output = pidLimit(output, pid_roll_max, pid_roll_min);
+    return output;
+}
+
+float PitchPIDCal(float kp, float ki, float kd, float e, float prev_e, float dp, float dt, float &I_term,float sat_u = 0, float sat_l = 0){
+    float output;
+    float P_term, D_term;
+
+    P_term = kp*e;
+
+    if(flightState){
+        I_term += ki*e*dt;  // first, I_term use as integration part, then multiple ki become I_term
+    }else if(!flightState){
+        I_term = 0;
+        return 0;
+    }
+
+    if(sat_u!=0 || sat_l!=0){ //had set sat_u or sat_l, zero = not specified.
+        if(I_term > sat_u){ I_term = sat_u; }
+        else if(I_term < sat_l){ I_term = sat_l;}
+    }
+
+    //I_term *= ki;
+    D_term = kd*dp/dt;
+    output = Iyy*(P_term + I_term - D_term);
+    output = pidLimit(output, pid_roll_max, pid_roll_min);
+    return output;
+}
+
+float YawPIDCal(float kp, float ki, float kd, float e, float prev_e, float dy, float dt, float &I_term,float sat_u = 0, float sat_l = 0){
+    float output;
+    float P_term, D_term;
+
+    P_term = kp*e;
+
+    if(flightState){
+        I_term += ki*e*dt;  // first, I_term use as integration part, then multiple ki become I_term
+    }else if(!flightState){
+        I_term = 0;
+        return 0;
+    }
+
+    if(sat_u!=0 || sat_l!=0){ //had set sat_u or sat_l, zero = not specified.
+        if(I_term > sat_u){ I_term = sat_u; }
+        else if(I_term < sat_l){ I_term = sat_l;}
+    }
+
+    //I_term *= ki;
+    D_term = kd*dy/dt;
+    output = Izz*(P_term + I_term - D_term);
     output = pidLimit(output, pid_roll_max, pid_roll_min);
     return output;
 }
