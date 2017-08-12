@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1127</width>
-    <height>691</height>
+    <height>721</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -76,7 +76,7 @@
     <property name="title">
      <string>Throttle</string>
     </property>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -86,21 +86,6 @@
       </rect>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
-      <item>
-       <widget class="QLabel" name="thrustLabel">
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Motor Throttle</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
@@ -299,7 +284,7 @@ Right</string>
       </size>
      </property>
      <property name="text">
-      <string>Detect Body</string>
+      <string>Detect People</string>
      </property>
     </widget>
     <widget class="QPushButton" name="vidButton">
@@ -354,8 +339,8 @@ Right</string>
      <rect>
       <x>2</x>
       <y>371</y>
-      <width>401</width>
-      <height>251</height>
+      <width>371</width>
+      <height>291</height>
      </rect>
     </property>
     <property name="title">
@@ -366,8 +351,8 @@ Right</string>
       <rect>
        <x>10</x>
        <y>30</y>
-       <width>381</width>
-       <height>201</height>
+       <width>351</width>
+       <height>251</height>
       </rect>
      </property>
      <property name="sizePolicy">
@@ -383,15 +368,6 @@ Right</string>
       <enum>Qt::ScrollBarAlwaysOff</enum>
      </property>
     </widget>
-    <zorder>textBrowser</zorder>
-    <zorder></zorder>
-    <zorder></zorder>
-    <zorder></zorder>
-    <zorder></zorder>
-    <zorder></zorder>
-    <zorder></zorder>
-    <zorder></zorder>
-    <zorder></zorder>
    </widget>
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
@@ -414,13 +390,13 @@ Right</string>
     <property name="checked">
      <bool>false</bool>
     </property>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>5</x>
        <y>26</y>
-       <width>391</width>
-       <height>191</height>
+       <width>396</width>
+       <height>205</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout">
@@ -735,1095 +711,1107 @@ Right</string>
       </item>
      </layout>
     </widget>
-    <zorder></zorder>
-    <zorder>label_kd</zorder>
-    <zorder>label_ki</zorder>
-    <zorder>label_pitch</zorder>
-    <zorder>kd_Wz</zorder>
-    <zorder>label_roll</zorder>
-    <zorder>kp_Pitch</zorder>
-    <zorder>lockButton</zorder>
-    <zorder>kd_H</zorder>
-    <zorder>label_kp</zorder>
-    <zorder>label_yaw</zorder>
-    <zorder>ki_Pitch</zorder>
-    <zorder>ki_H</zorder>
-    <zorder>kd_Roll</zorder>
-    <zorder>saveButton</zorder>
-    <zorder>kp_Roll</zorder>
-    <zorder>ki_Wz</zorder>
-    <zorder>kp_Wz</zorder>
-    <zorder>ki_Roll</zorder>
-    <zorder>label_att</zorder>
-    <zorder>kp_H</zorder>
-    <zorder>kd_Pitch</zorder>
    </widget>
    <widget class="QGroupBox" name="groupBox_5">
     <property name="geometry">
      <rect>
-      <x>420</x>
+      <x>380</x>
       <y>370</y>
-      <width>701</width>
-      <height>261</height>
+      <width>741</width>
+      <height>291</height>
      </rect>
     </property>
     <property name="title">
      <string>Sensor Data</string>
     </property>
-    <widget class="QWidget" name="">
+    <widget class="QTabWidget" name="tabWidget">
      <property name="geometry">
       <rect>
-       <x>340</x>
-       <y>140</y>
-       <width>355</width>
-       <height>111</height>
-      </rect>
-     </property>
-     <layout class="QGridLayout" name="gridLayout_5">
-      <item row="1" column="0">
-       <widget class="QLabel" name="GxLabel">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>X:</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="GyLabel">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>5</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Y:</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QProgressBar" name="pgBar_gy">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>250</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="minimum">
-         <number>-32768</number>
-        </property>
-        <property name="maximum">
-         <number>32767</number>
-        </property>
-        <property name="value">
-         <number>0</number>
-        </property>
-        <property name="textVisible">
-         <bool>false</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1">
-       <widget class="QProgressBar" name="pgBar_gz">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>250</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="minimum">
-         <number>-32768</number>
-        </property>
-        <property name="maximum">
-         <number>32767</number>
-        </property>
-        <property name="value">
-         <number>0</number>
-        </property>
-        <property name="textVisible">
-         <bool>false</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QProgressBar" name="pgBar_gx">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>250</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="minimum">
-         <number>-32768</number>
-        </property>
-        <property name="maximum">
-         <number>32767</number>
-        </property>
-        <property name="value">
-         <number>0</number>
-        </property>
-        <property name="textVisible">
-         <bool>false</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="GzLabel">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>5</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Z:</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="2">
-       <widget class="QLabel" name="label_gx">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>70</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::Panel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Sunken</enum>
-        </property>
-        <property name="lineWidth">
-         <number>2</number>
-        </property>
-        <property name="text">
-         <string>0</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0" colspan="3">
-       <widget class="QLabel" name="gyroValuesLabel">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Gyro values (deg/ s)</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="2">
-       <widget class="QLabel" name="label_gy">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>70</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::Panel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Sunken</enum>
-        </property>
-        <property name="lineWidth">
-         <number>2</number>
-        </property>
-        <property name="text">
-         <string>0</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="2">
-       <widget class="QLabel" name="label_gz">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>70</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::Panel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Sunken</enum>
-        </property>
-        <property name="lineWidth">
-         <number>2</number>
-        </property>
-        <property name="text">
-         <string>0</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-    <widget class="QWidget" name="">
-     <property name="geometry">
-      <rect>
-       <x>3</x>
+       <x>10</x>
        <y>20</y>
-       <width>327</width>
-       <height>110</height>
+       <width>721</width>
+       <height>261</height>
       </rect>
      </property>
-     <layout class="QGridLayout" name="gridLayout_2">
-      <item row="1" column="1">
-       <widget class="QProgressBar" name="pgBar_mx">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>200</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="minimum">
-         <number>-4096</number>
-        </property>
-        <property name="maximum">
-         <number>4095</number>
-        </property>
-        <property name="value">
-         <number>0</number>
-        </property>
-        <property name="textVisible">
-         <bool>false</bool>
-        </property>
-        <property name="invertedAppearance">
-         <bool>false</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="2">
-       <widget class="QLabel" name="label_my">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>70</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::Panel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Sunken</enum>
-        </property>
-        <property name="lineWidth">
-         <number>2</number>
-        </property>
-        <property name="midLineWidth">
-         <number>0</number>
-        </property>
-        <property name="text">
-         <string>0</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="MzLabel">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>Z:</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="2">
-       <widget class="QLabel" name="label_mx">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>70</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::Panel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Sunken</enum>
-        </property>
-        <property name="lineWidth">
-         <number>2</number>
-        </property>
-        <property name="text">
-         <string>0</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="MxLabel">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>X:</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1">
-       <widget class="QProgressBar" name="pgBar_mz">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>200</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="minimum">
-         <number>-4096</number>
-        </property>
-        <property name="maximum">
-         <number>4095</number>
-        </property>
-        <property name="value">
-         <number>0</number>
-        </property>
-        <property name="textVisible">
-         <bool>false</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="2">
-       <widget class="QLabel" name="label_mz">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>70</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::Panel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Sunken</enum>
-        </property>
-        <property name="lineWidth">
-         <number>2</number>
-        </property>
-        <property name="text">
-         <string>0</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="MyLabel">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>Y:</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QProgressBar" name="pgBar_my">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>200</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="minimum">
-         <number>-4096</number>
-        </property>
-        <property name="maximum">
-         <number>4095</number>
-        </property>
-        <property name="value">
-         <number>0</number>
-        </property>
-        <property name="textVisible">
-         <bool>false</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0" colspan="3">
-       <widget class="QLabel" name="megnetoLabel_2">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Magnetometer (uT)</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-    <widget class="QWidget" name="">
-     <property name="geometry">
-      <rect>
-       <x>3</x>
-       <y>140</y>
-       <width>327</width>
-       <height>111</height>
-      </rect>
+     <property name="currentIndex">
+      <number>0</number>
      </property>
-     <layout class="QGridLayout" name="gridLayout_4">
-      <item row="2" column="0">
-       <widget class="QLabel" name="PitchLabel">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>Pitch:</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QProgressBar" name="pgBar_roll">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>200</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="minimum">
-         <number>-180</number>
-        </property>
-        <property name="maximum">
-         <number>180</number>
-        </property>
-        <property name="value">
-         <number>0</number>
-        </property>
-        <property name="textVisible">
-         <bool>false</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="RollLabel">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>Roll:</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1">
-       <widget class="QProgressBar" name="pgBar_yaw">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>200</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="minimum">
-         <number>-180</number>
-        </property>
-        <property name="maximum">
-         <number>180</number>
-        </property>
-        <property name="value">
-         <number>0</number>
-        </property>
-        <property name="textVisible">
-         <bool>false</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QProgressBar" name="pgBar_pitch">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>200</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="minimum">
-         <number>-180</number>
-        </property>
-        <property name="maximum">
-         <number>180</number>
-        </property>
-        <property name="value">
-         <number>0</number>
-        </property>
-        <property name="textVisible">
-         <bool>false</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="YawLabel">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>Yaw:</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="2">
-       <widget class="QLabel" name="label_ang_roll">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>70</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::Panel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Sunken</enum>
-        </property>
-        <property name="lineWidth">
-         <number>2</number>
-        </property>
-        <property name="text">
-         <string>0</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="2">
-       <widget class="QLabel" name="label_ang_pitch">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>70</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::Panel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Sunken</enum>
-        </property>
-        <property name="lineWidth">
-         <number>2</number>
-        </property>
-        <property name="text">
-         <string>0</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="2">
-       <widget class="QLabel" name="label_ang_yaw">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>70</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::Panel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Sunken</enum>
-        </property>
-        <property name="lineWidth">
-         <number>2</number>
-        </property>
-        <property name="text">
-         <string>0</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0" colspan="3">
-       <widget class="QLabel" name="label">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Attitude (degrees)</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-    <widget class="QWidget" name="">
-     <property name="geometry">
-      <rect>
-       <x>340</x>
-       <y>20</y>
-       <width>355</width>
-       <height>110</height>
-      </rect>
-     </property>
-     <layout class="QGridLayout" name="gridLayout_3">
-      <item row="2" column="1">
-       <widget class="QProgressBar" name="pgBar_ay">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>250</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="minimum">
-         <number>-32768</number>
-        </property>
-        <property name="maximum">
-         <number>32767</number>
-        </property>
-        <property name="value">
-         <number>0</number>
-        </property>
-        <property name="textVisible">
-         <bool>false</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1">
-       <widget class="QProgressBar" name="pgBar_az">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>250</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="minimum">
-         <number>-32768</number>
-        </property>
-        <property name="maximum">
-         <number>32767</number>
-        </property>
-        <property name="value">
-         <number>0</number>
-        </property>
-        <property name="textVisible">
-         <bool>false</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="AyLabel">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>Y:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="AzLabel">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>Z:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="AxLabel">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>X:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QProgressBar" name="pgBar_ax">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>250</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="minimum">
-         <number>-32768</number>
-        </property>
-        <property name="maximum">
-         <number>32767</number>
-        </property>
-        <property name="value">
-         <number>0</number>
-        </property>
-        <property name="textVisible">
-         <bool>false</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="2">
-       <widget class="QLabel" name="label_ax">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>70</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::Panel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Sunken</enum>
-        </property>
-        <property name="lineWidth">
-         <number>2</number>
-        </property>
-        <property name="text">
-         <string>0</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0" colspan="3">
-       <widget class="QLabel" name="accelValuesLabel">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Accel values (m/ s^2)</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="2">
-       <widget class="QLabel" name="label_ay">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>70</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::Panel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Sunken</enum>
-        </property>
-        <property name="lineWidth">
-         <number>2</number>
-        </property>
-        <property name="text">
-         <string>0</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="2">
-       <widget class="QLabel" name="label_az">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>70</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::Panel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Sunken</enum>
-        </property>
-        <property name="lineWidth">
-         <number>2</number>
-        </property>
-        <property name="text">
-         <string>0</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
-     </layout>
+     <widget class="QWidget" name="numTab">
+      <attribute name="title">
+       <string>Numerical</string>
+      </attribute>
+      <widget class="QWidget" name="layoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>347</x>
+         <y>0</y>
+         <width>355</width>
+         <height>110</height>
+        </rect>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="2" column="1">
+         <widget class="QProgressBar" name="pgBar_ay">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>250</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="minimum">
+           <number>-32768</number>
+          </property>
+          <property name="maximum">
+           <number>32767</number>
+          </property>
+          <property name="value">
+           <number>0</number>
+          </property>
+          <property name="textVisible">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QProgressBar" name="pgBar_az">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>250</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="minimum">
+           <number>-32768</number>
+          </property>
+          <property name="maximum">
+           <number>32767</number>
+          </property>
+          <property name="value">
+           <number>0</number>
+          </property>
+          <property name="textVisible">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="AyLabel">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Y:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="AzLabel">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Z:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="AxLabel">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>X:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QProgressBar" name="pgBar_ax">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>250</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="minimum">
+           <number>-32768</number>
+          </property>
+          <property name="maximum">
+           <number>32767</number>
+          </property>
+          <property name="value">
+           <number>0</number>
+          </property>
+          <property name="textVisible">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <widget class="QLabel" name="label_ax">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>70</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Panel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Sunken</enum>
+          </property>
+          <property name="lineWidth">
+           <number>2</number>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0" colspan="3">
+         <widget class="QLabel" name="accelValuesLabel">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>11</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Accelerometer (m/ s^2)</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="2">
+         <widget class="QLabel" name="label_ay">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>70</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Panel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Sunken</enum>
+          </property>
+          <property name="lineWidth">
+           <number>2</number>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="2">
+         <widget class="QLabel" name="label_az">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>70</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Panel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Sunken</enum>
+          </property>
+          <property name="lineWidth">
+           <number>2</number>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="layoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>0</y>
+         <width>327</width>
+         <height>110</height>
+        </rect>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="1" column="1">
+         <widget class="QProgressBar" name="pgBar_mx">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="minimum">
+           <number>-4096</number>
+          </property>
+          <property name="maximum">
+           <number>4095</number>
+          </property>
+          <property name="value">
+           <number>0</number>
+          </property>
+          <property name="textVisible">
+           <bool>false</bool>
+          </property>
+          <property name="invertedAppearance">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="2">
+         <widget class="QLabel" name="label_my">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>70</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Panel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Sunken</enum>
+          </property>
+          <property name="lineWidth">
+           <number>2</number>
+          </property>
+          <property name="midLineWidth">
+           <number>0</number>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="MzLabel">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Z:</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <widget class="QLabel" name="label_mx">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>70</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Panel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Sunken</enum>
+          </property>
+          <property name="lineWidth">
+           <number>2</number>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="MxLabel">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>X:</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QProgressBar" name="pgBar_mz">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="minimum">
+           <number>-4096</number>
+          </property>
+          <property name="maximum">
+           <number>4095</number>
+          </property>
+          <property name="value">
+           <number>0</number>
+          </property>
+          <property name="textVisible">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="2">
+         <widget class="QLabel" name="label_mz">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>70</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Panel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Sunken</enum>
+          </property>
+          <property name="lineWidth">
+           <number>2</number>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="MyLabel">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Y:</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QProgressBar" name="pgBar_my">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="minimum">
+           <number>-4096</number>
+          </property>
+          <property name="maximum">
+           <number>4095</number>
+          </property>
+          <property name="value">
+           <number>0</number>
+          </property>
+          <property name="textVisible">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0" colspan="3">
+         <widget class="QLabel" name="megnetoLabel_2">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>11</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Magnetometer (µT)</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="layoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>347</x>
+         <y>120</y>
+         <width>355</width>
+         <height>111</height>
+        </rect>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_5">
+        <item row="1" column="0">
+         <widget class="QLabel" name="GxLabel">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>X:</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="GyLabel">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>5</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Y:</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QProgressBar" name="pgBar_gy">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>250</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="minimum">
+           <number>-32768</number>
+          </property>
+          <property name="maximum">
+           <number>32767</number>
+          </property>
+          <property name="value">
+           <number>0</number>
+          </property>
+          <property name="textVisible">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QProgressBar" name="pgBar_gz">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>250</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="minimum">
+           <number>-32768</number>
+          </property>
+          <property name="maximum">
+           <number>32767</number>
+          </property>
+          <property name="value">
+           <number>0</number>
+          </property>
+          <property name="textVisible">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QProgressBar" name="pgBar_gx">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>250</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="minimum">
+           <number>-32768</number>
+          </property>
+          <property name="maximum">
+           <number>32767</number>
+          </property>
+          <property name="value">
+           <number>0</number>
+          </property>
+          <property name="textVisible">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="GzLabel">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>5</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Z:</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <widget class="QLabel" name="label_gx">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>70</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Panel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Sunken</enum>
+          </property>
+          <property name="lineWidth">
+           <number>2</number>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0" colspan="3">
+         <widget class="QLabel" name="gyroValuesLabel">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>11</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Rate Gyroscope (deg/ s)</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="2">
+         <widget class="QLabel" name="label_gy">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>70</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Panel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Sunken</enum>
+          </property>
+          <property name="lineWidth">
+           <number>2</number>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="2">
+         <widget class="QLabel" name="label_gz">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>70</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Panel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Sunken</enum>
+          </property>
+          <property name="lineWidth">
+           <number>2</number>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="layoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>120</y>
+         <width>327</width>
+         <height>111</height>
+        </rect>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_4">
+        <item row="2" column="0">
+         <widget class="QLabel" name="PitchLabel">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Pitch:</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QProgressBar" name="pgBar_roll">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="minimum">
+           <number>-180</number>
+          </property>
+          <property name="maximum">
+           <number>180</number>
+          </property>
+          <property name="value">
+           <number>0</number>
+          </property>
+          <property name="textVisible">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="RollLabel">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Roll:</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QProgressBar" name="pgBar_yaw">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="minimum">
+           <number>-180</number>
+          </property>
+          <property name="maximum">
+           <number>180</number>
+          </property>
+          <property name="value">
+           <number>0</number>
+          </property>
+          <property name="textVisible">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QProgressBar" name="pgBar_pitch">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="minimum">
+           <number>-180</number>
+          </property>
+          <property name="maximum">
+           <number>180</number>
+          </property>
+          <property name="value">
+           <number>0</number>
+          </property>
+          <property name="textVisible">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="YawLabel">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Yaw:</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <widget class="QLabel" name="label_ang_roll">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>70</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Panel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Sunken</enum>
+          </property>
+          <property name="lineWidth">
+           <number>2</number>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="2">
+         <widget class="QLabel" name="label_ang_pitch">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>70</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Panel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Sunken</enum>
+          </property>
+          <property name="lineWidth">
+           <number>2</number>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="2">
+         <widget class="QLabel" name="label_ang_yaw">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>70</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Panel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Sunken</enum>
+          </property>
+          <property name="lineWidth">
+           <number>2</number>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0" colspan="3">
+         <widget class="QLabel" name="label">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>11</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Attitude (degrees)</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="chartTab">
+      <attribute name="title">
+       <string>Line Chart</string>
+      </attribute>
+      <widget class="QWidget" name="widget" native="true">
+       <property name="geometry">
+        <rect>
+         <x>110</x>
+         <y>50</y>
+         <width>120</width>
+         <height>80</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
     </widget>
    </widget>
+   <zorder>groupBox_4</zorder>
+   <zorder>groupBox</zorder>
    <zorder>gyro</zorder>
-   <zorder>textBrowser</zorder>
    <zorder>vidLabel</zorder>
-   <zorder></zorder>
    <zorder>groupBox_2</zorder>
    <zorder>groupBox_3</zorder>
+   <zorder>groupBox_5</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
