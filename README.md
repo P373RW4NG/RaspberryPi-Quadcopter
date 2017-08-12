@@ -2,7 +2,7 @@ Required libraries:  OpenCV 3, Boost, wiringPi(optional)
 
 Features:
 * User interface
-* Adjustable PID gain when flying
+* Online adjustable PID gains 
 * Face detection 
 * People detection
 * Autonomous flight (developing) 
