@@ -660,7 +660,8 @@ uint8_t MPU6050::dmpGetGravity(VectorFloat *v, Quaternion *q) {
 // uint8_t MPU6050::dmpGetEIS(long *data, const uint8_t* packet);
 
 uint8_t MPU6050::getYPR(float* data, float ax, float ay, float az){
-    data[0] = acos(az/sqrt(ax*ax + ay*ay + az*az)); //yaw
+    data[0] = acos(az/sqrt(ax*ax + ay*ay + az*az)); //angle between gravitational vector and z axis
+    // To get yaw angle, we need to integrate magnetometer data
     data[1] = atan2(ax, sqrt(ay*ay + az*az)); //pitch
     data[2] = atan2(ay, sqrt(ax*ax + az*az)); //roll
     return 0;
