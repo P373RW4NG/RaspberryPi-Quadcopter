@@ -441,7 +441,7 @@ Right</string>
          </sizepolicy>
         </property>
         <property name="text">
-         <string>Attitude</string>
+         <string>Altitude</string>
         </property>
        </widget>
       </item>
