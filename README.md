@@ -1,4 +1,4 @@
-Required libraries:  OpenCV 3, Boost, wiringPi(optional)
+Required libraries:  OpenCV 3, Boost, RaspiCam, wiringPi(optional)
 
 Features:
 * User interface
