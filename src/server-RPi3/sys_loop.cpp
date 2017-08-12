@@ -90,9 +90,9 @@ float Ax, Ay, Az;
 float Gx, Gy, Gz;
 float Mx, My, Mz;
 
-float accRes = 9.81/8192.0;
-float gyroRes = 1.0/65.536;
-float magRes = 8192.0/2400.0;
+const float accRes = 9.81/8192.0;
+const float gyroRes = 1.0/65.536;
+const float magRes = 8192.0/2400.0;
 
 float ftr_dt;
 clock_t curr_t, ftr_curr_t;
@@ -111,9 +111,9 @@ float prev_e_roll=0, prev_e_pitch=0;
 float prev_e_Wz=0;
 float dt;
 
-float pid_saturator = 80;
-float pid_roll_max = 100;
-float pid_roll_min = -100;
+float pid_saturator = 300;
+float pid_roll_max = 400;
+float pid_roll_min = -400;
 
 float I_e_H, I_e_roll, I_e_pitch, I_e_Wz;
 float D_e_H, D_e_roll, D_e_pitch, D_e_Wz;
@@ -126,7 +126,18 @@ float Kp_Wz=3, Ki_Wz=0, Kd_Wz=0;
 float roll_I_term=0, pitch_I_term=0, Wz_I_term=0;
 
 float u1, u2, u3, u4;
-float coe1=1, coe2=1, coe3=1;
+
+const float Ixx=0.0746;
+const float Iyy=0.08283;
+const float Izz=0.14445;
+
+const float coe1=1, coe2=1, coe3=1;
+
+float prev_roll=0;
+float prev_pitch=0;
+float prev_Gz=0;
+
+float droll, dpitch, dGz;
 
 bool flightState = false;
 //
@@ -351,8 +362,8 @@ void readIMUdata(Quaternion* q, VectorInt16* accel, VectorInt16* gyro, VectorInt
         yaw=ypr[0];
 #if (complementaryFilter==1)
 
-        roll = complFtr(roll, ypr[2], Gx*M_PI/180, ftr_dt, 0.8);
-        pitch = complFtr(pitch, ypr[1], Gy*M_PI/180, ftr_dt, 0.8);
+        roll = complFtr(roll, ypr[2], Gx*M_PI/180, ftr_dt, 0.9);
+        pitch = complFtr(pitch, ypr[1], Gy*M_PI/180, ftr_dt, 0.9);
 
 #else
 
@@ -616,10 +627,12 @@ int main(){
         u1 = desired_H;
             
         // roll part
-        u2 = pidCal(Kp_roll, Ki_roll, Kd_roll ,e_roll, prev_e_roll, dt, roll_I_term, pid_saturator, -pid_saturator);
+        //u2 = pidCal(Kp_roll, Ki_roll, Kd_roll ,e_roll, prev_e_roll, dt, roll_I_term, pid_saturator, -pid_saturator);
+        u2 = pidCal_v2(Kp_roll, Ki_roll, Kd_roll ,e_roll, prev_e_roll, dt, roll_I_term, pid_saturator, -pid_saturator);
             
         //pitch part
-        u3 = pidCal(Kp_pitch, Ki_pitch, Kd_pitch, e_pitch, prev_e_pitch, dt, pitch_I_term, pid_saturator, -pid_saturator);
+        //u3 = pidCal(Kp_pitch, Ki_pitch, Kd_pitch, e_pitch, prev_e_pitch, dt, pitch_I_term, pid_saturator, -pid_saturator);
+        u3 = pidCal_v2(Kp_pitch, Ki_pitch, Kd_pitch, e_pitch, prev_e_pitch, dt, pitch_I_term, pid_saturator, -pid_saturator);
             
         //yaw angular velocity (Wz) part
         u4 = pidCal(Kp_Wz, Ki_Wz, Kd_Wz, e_Wz, prev_e_Wz, dt, Wz_I_term, pid_saturator, -pid_saturator);
