@@ -7,4 +7,4 @@ Features:
 * People detection
 * Autonomous flight (developing) 
 
-<img width="1239" alt="gui0812" src="https://user-images.githubusercontent.com/29127069/29239442-66915276-7f81-11e7-9208-e32275e80fe2.png"/>
+<img width="1239" alt="gui0813" src="https://user-images.githubusercontent.com/29127069/29244744-f7746d98-7ff2-11e7-8b47-d89bb6777e81.png"/>
