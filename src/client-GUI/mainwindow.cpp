@@ -119,46 +119,46 @@ MainWindow::~MainWindow()
 
 void MainWindow::keyPressEvent(QKeyEvent *event)
 {
-    if(!event->isAutoRepeat() && event->key()==Qt::Key_W){
+    if(!event->isAutoRepeat() && event->key()==Qt::Key_W){  //forward
         keyHold[0]='1';
         //ui->statusLabel->setText("Pressing W");
     }
-    if(!event->isAutoRepeat() && event->key()==Qt::Key_A){
+    if(!event->isAutoRepeat() && event->key()==Qt::Key_A){  //move left
         keyHold[1]='1';
         //ui->statusLabel->setText("Pressing A");
     }
-    if(!event->isAutoRepeat() && event->key()==Qt::Key_S){
+    if(!event->isAutoRepeat() && event->key()==Qt::Key_S){  //backward
         keyHold[2]='1';
         //ui->statusLabel->setText("Pressing S");
     }
-    if(!event->isAutoRepeat() && event->key()==Qt::Key_D){
+    if(!event->isAutoRepeat() && event->key()==Qt::Key_D){  //move right
         keyHold[3]='1';
         //ui->statusLabel->setText("Pressing D");
     }
-    if(!event->isAutoRepeat() && event->key()==Qt::Key_Up ){ //space
+    if(!event->isAutoRepeat() && event->key()==Qt::Key_Up ){  //increase throttle
         keyHold[4]='1';
         //ui->statusLabel->setText("Pressing Space");
     }
-    if(!event->isAutoRepeat() && event->key()==Qt::Key_Down){  //shift
+    if(!event->isAutoRepeat() && event->key()==Qt::Key_Down){   //decrease throttle
         keyHold[5]='1';
         //ui->statusLabel->setText("Pressing Shift");
     }
-    if(!event->isAutoRepeat() && event->key()==Qt::Key_Escape ){  //shut down all motorss
+    if(!event->isAutoRepeat() && event->key()==Qt::Key_Escape ){  //shut down all motor
             keyHold[0]='1';
             keyHold[1]='1';
             keyHold[2]='1';
             keyHold[3]='1';
             //ui->statusLabel->setText("Pressed ESC");
         }
-    if(!event->isAutoRepeat() && event->key()==Qt::Key_I){
+    if(!event->isAutoRepeat() && event->key()==Qt::Key_I){   //video play/pause
         ui->vidButton->clicked();
     }
-    if(!event->isAutoRepeat() && event->key()==Qt::Key_Left ){  // yaw left
+    if(!event->isAutoRepeat() && event->key()==Qt::Key_Left ){  // yaw control, spin(c.c.w.)
             keyHold[1]='1';
             keyHold[7]='1';
             //ui->statusLabel->setText("turn left");
         }
-        if(!event->isAutoRepeat() && event->key()==Qt::Key_Right ){  // yaw right
+        if(!event->isAutoRepeat() && event->key()==Qt::Key_Right ){  // yaw control, spin(c.w.)
             keyHold[3]='1';
             keyHold[7]='1';
             //ui->statusLabel->setText("turn right");
@@ -166,7 +166,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
 
 }
 
-void MainWindow::keyReleaseEvent(QKeyEvent *event)
+void MainWindow::keyReleaseEvent(QKeyEvent *event)  //reset buttons
 {
 
     if(!event->isAutoRepeat() && event->key()==Qt::Key_W){
@@ -193,19 +193,19 @@ void MainWindow::keyReleaseEvent(QKeyEvent *event)
         keyHold[5]='0';
         //ui->statusLabel->setText("Shift Released");
     }
-    if(!event->isAutoRepeat() && event->key()==Qt::Key_Escape ){  //shut down all motorss
+    if(!event->isAutoRepeat() && event->key()==Qt::Key_Escape ){  
             keyHold[0]='0';
             keyHold[1]='0';
             keyHold[2]='0';
             keyHold[3]='0';
             //ui->statusLabel->setText("ESC released");
         }
-        if(!event->isAutoRepeat() && event->key()==Qt::Key_Left ){  // yaw left
+        if(!event->isAutoRepeat() && event->key()==Qt::Key_Left ){  
             keyHold[1]='0';
             keyHold[7]='0';
             //ui->statusLabel->setText("Key released");
         }
-        if(!event->isAutoRepeat() && event->key()==Qt::Key_Right ){  // yaw right
+        if(!event->isAutoRepeat() && event->key()==Qt::Key_Right ){  
             keyHold[3]='0';
             keyHold[7]='0';
             //ui->statusLabel->setText("Key released");
