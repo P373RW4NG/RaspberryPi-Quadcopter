@@ -151,13 +151,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
             //ui->statusLabel->setText("Pressed ESC");
         }
     if(!event->isAutoRepeat() && event->key()==Qt::Key_I){
-        if(keyHold[6]=='0'){
-            keyHold[6]='1';
-            //ui->statusLabel->setText("Receive Video");
-        }else if(keyHold[6]=='1'){
-            keyHold[6]='0';
-            //ui->statusLabel->setText("Stop Receive Video");
-        }
+        ui->vidButton->clicked();
     }
     if(!event->isAutoRepeat() && event->key()==Qt::Key_Left ){  // yaw left
             keyHold[1]='1';
