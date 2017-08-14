@@ -50,7 +50,7 @@ public:
     ~MainWindow();
     void keyPressEvent(QKeyEvent *event);
     void keyReleaseEvent(QKeyEvent *krevent);
-    std::string keyHold="00000000"; //W,A,S,D,Space,Shift,I
+    std::string keyHold="00000000"; //Key: W, A, S, D, Up, Down, I, Left/Right
 
 private:
     Ui::MainWindow *ui; 
