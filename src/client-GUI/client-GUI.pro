@@ -34,8 +34,8 @@ INCLUDEPATH += /usr/local/include
 INCLUDEPATH += /usr/local/Cellar/boost/1.64.0_1/include
 
 LIBS+= -L/usr/local/Cellar/boost/1.64.0_1/lib  -lboost_system\
-                                         -lboost_date_time\
-                                         -lboost_thread-mt
+                                               -lboost_date_time\
+                                               -lboost_thread-mt
 
 
 LIBS+= -L/usr/local/lib -lopencv_world
