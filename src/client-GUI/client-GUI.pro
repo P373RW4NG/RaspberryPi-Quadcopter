@@ -31,9 +31,9 @@ HEADERS  += mainwindow.h
 FORMS    += mainwindow.ui
 
 INCLUDEPATH += /usr/local/include
-INCLUDEPATH += /usr/local/Cellar/1.64.0_1/include
+INCLUDEPATH += /usr/local/Cellar/boost/1.64.0_1/include
 
-LIBS+= -L/usr/local/Cellar/1.64.0_1/lib  -lboost_system\
+LIBS+= -L/usr/local/Cellar/boost/1.64.0_1/lib  -lboost_system\
                                          -lboost_date_time\
                                          -lboost_thread-mt
 
