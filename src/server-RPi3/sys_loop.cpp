@@ -172,12 +172,7 @@ void calibration(tcp::socket* sock, VectorInt16* accel, VectorInt16* gyro){ // o
         acclSum[0] += accel->x;
         acclSum[1] += accel->y;
         acclSum[2] += accel->z;
-        //n = sampleCtr/10;
-        //ostr <<" "<< n << "%\n";
-        //sendMsg(sock, ostr.str());
-        //if(sampleCtr==1000){sendMsg(sock, " 33%\n");}
-        //if(sampleCtr==2000){sendMsg(sock, " 67%\n");}
-        //if(sampleCtr==2999){sendMsg(sock, " 99%\n");}
+       
         sampleCtr++;
         }
     }
@@ -221,7 +216,6 @@ void setup(tcp::socket *sock, VectorInt16* accel, VectorInt16* gyro) {
     // make sure it worked (returns 0 if so)
     if (devStatus == 0) {
         // turn on the DMP, now that it's ready
-        //printf("Enabling DMP...\n");
         sendMsg(sock, "Enabling DMP...\n");
         mpu.setDMPEnabled(true);
 
@@ -231,18 +225,12 @@ void setup(tcp::socket *sock, VectorInt16* accel, VectorInt16* gyro) {
         mpuIntStatus = mpu.getIntStatus();
 
         // set our DMP Ready flag so the main loop() function knows it's okay to use it
-        //printf("DMP ready!\n");
         sendMsg(sock, "DMP ready!\n");
         dmpReady = true;
 
         // get expected DMP packet size for later comparison
         packetSize = mpu.dmpGetFIFOPacketSize();
     } else {
-        // ERROR!
-        // 1 = initial memory load failed
-        // 2 = DMP configuration updates failed
-        // (if it's going to break, usually the code will be 1)
-        //printf("DMP Initialization failed (code %d)\n", devStatus);
         sendMsg(sock, "DMP Initialization failed\n");
     }
 
@@ -264,11 +252,6 @@ void setup(tcp::socket *sock, VectorInt16* accel, VectorInt16* gyro) {
 
 }
 void readIMUdata(Quaternion* q, VectorInt16* accel, VectorInt16* gyro, VectorInt16* magneto, VectorFloat* gravity){
-    /* Gyro calibration
-     * gathering a certain amount of data in a time period, then we calculate the average and deviation
-     * for eliminate gyro bias. IMU sample rate is about 500Hz, so we can run about 3000 cycles in 6 seconds,
-     */
-
     while(setupRdy==false){} //wait for the IMU setup to complete.
     while(true){
 
@@ -288,17 +271,10 @@ void readIMUdata(Quaternion* q, VectorInt16* accel, VectorInt16* gyro, VectorInt
         mpu.getFIFOBytes(fifoBuffer, packetSize);
         //mpu.dmpGetQuaternion(q, fifoBuffer);
 
-
-
         mpu.getMotion9(&accel->x, &accel->y, &accel->z,
                        &gyro->x, &gyro->y, &gyro->z,
                        &magneto->x, &magneto->y, &magneto->z);
-        //mpu.dmpGetAccel(accel, fifoBuffer);
-        //mpu.dmpGetGyro(gyro, fifoBuffer);
-        //mpu.getMagneto(&magneto->x, &magneto->y, &magneto->z);
-        /*ax=accel->x - axBias;
-        ay=accel->y - ayBias;
-        az=accel->z - azBias;*/
+        
 #if(accUserOffset==1)
         ax=accel->x - userOffset_ax;
         ay=accel->y - userOffset_ay;
@@ -326,34 +302,14 @@ void readIMUdata(Quaternion* q, VectorInt16* accel, VectorInt16* gyro, VectorInt
         My=my*magRes;
         Mz=mz*magRes;
 
-        // we can't calculate dt untill second loop.
         ftr_curr_t = clock();
         if(ftr_prev_t != 0){
             ftr_dt = float(ftr_curr_t - ftr_prev_t) /CLOCKS_PER_SEC; // sec
             //ftr_dt = 1 ;
         }
         ftr_prev_t = ftr_curr_t;
-        //std::cout<<std::to_string(mpu.getFullScaleAccelRange())<<std::endl;
-        //std::cout<<std::to_string(mpu.getFullScaleGyroRange())<<std::endl;
-
-        //printf("Ax: %4.7f Ay: %4.7f Az: %4.7f  | Gx: %4.7f Gy: %4.7f Gz: %4.7f | \n",Ax, Ay, Az, Gx, Gy, Gz);
-        //printf("Ax: %7d Ay: %7d Az: %7d  | Gx: %7d Gy: %7d Gz: %7d | \n",accel->x, accel->y, accel->z, gyro->x, gyro->y, gyro->z);
-        //printf("gxBias: %7d gyBias: %7d gzBias: %7d \n",gxBias ,gyBias, gzBias);
-        //std::cout<<Ax<<" "<<Ay<<" "<<Az<<" "<<Gx<<" "<<Gy<<" "<<Gz<<std::endl;
-        //quaternion update part
-
-        //MadgwickAHRSupdate(Gx, Gy, Gz, Ax, Ay, Az, Mx, My, Mz);
-
-       // MadgwickAHRSupdateIMU(Gx, Gy, Gz, Ax, Ay, Az); ^
-        //q->w=qu0; ^
-        //q->x=qu1; ^
-        //q->y=qu2; ^
-        //q->z=qu3; ^
 
         mpu.dmpGetQuaternion(&qv, fifoBuffer);
-        //mpu.dmpGetGravity(gravity, q);
-        //mpu.dmpGetYawPitchRoll(ypr, q, gravity);
-        //mpu.dmpGetEuler(ypr, q); // ^
         mpu.getYPR(ypr, Ax, Ay, Az);
 
         //std::cout<< qv.w <<" "<< qv.x<<" "<< qv.y<< " "<< qv.z<<std::endl;
@@ -461,7 +417,7 @@ void cmd_data_rw(tcp::socket* sock, VectorInt16* accel, VectorInt16* gyro){  //r
     setup(sock, accel, gyro); //setup imu, pwm pca9685
     //mpu.initialize();
     for(;;){
-//read user command(keyboard status)
+        //read user command
         char buff[1024];
         int bytes=read(*sock, buffer(buff), boost::bind(read_complete, buff, _1, _2));
         std::string msg(buff, bytes);
@@ -473,7 +429,7 @@ void cmd_data_rw(tcp::socket* sock, VectorInt16* accel, VectorInt16* gyro){  //r
         //std::cout<<usrcmd<<' '<<mo_cmd<<' '<<att_cmd<<"   FL: "<<mtFL<<" FR: "<<mtFR<<" RL: "<<mtRL<<" RR: "<<mtRR<<std::endl;
         //std::cout<<msg;
         sock->write_some(buffer(msg));
-// send IMU data to client
+        // send IMU data to client
         sendIMUdata(sock);
         sendYPR(sock);
         sendThrust(sock);
@@ -602,7 +558,6 @@ int main(){
             }
             else if(att_cmd == "01"){
                 desired_H -= h_inc;
-
             }
 
             // turn left, c.c.w. spin
