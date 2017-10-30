@@ -354,6 +354,7 @@ void MainWindow::recVid()
             frame=cv::imdecode(cv::Mat(vid_buff), CV_LOAD_IMAGE_COLOR );
             cv::flip(frame, frame, 0);
             cv::flip(frame, frame, 1);
+            cv::cvtColor(frame, frame_gray, CV_BGR2GRAY);
             if(idx[3]==1){
                 //cascadeBodyDetection();
                 HOGPeopleDetection();
@@ -452,13 +453,11 @@ void MainWindow::loadSettings()
 void MainWindow::cascadeBodyDetection()
 {
     std::vector<cv::Rect> bodies;
-    cv::Mat frame_gray;
+    cv::Mat frame_gray_equ;
     std::vector<cv::Point> contour;
+    cv::equalizeHist(frame_gray, frame_gray_equ);
 
-    cv::cvtColor(frame, frame_gray, CV_BGR2GRAY);
-    cv::equalizeHist(frame_gray, frame_gray);
-
-    body_cascade.detectMultiScale(frame_gray, bodies, 1.1, 2, 0 | cv::CASCADE_SCALE_IMAGE, cv::Size(30, 30));
+    body_cascade.detectMultiScale(frame_gray_equ, bodies, 1.1, 2, 0 | cv::CASCADE_SCALE_IMAGE, cv::Size(30, 30));
 
     for(size_t i=0; i<bodies.size(); i++){
         /*
@@ -467,7 +466,7 @@ void MainWindow::cascadeBodyDetection()
          */
         cv::rectangle(frame, bodies[i], cv::Scalar(0, 200, 255), 2);
         std::stringstream ss;
-        ss<<i;
+        ss<<i+1;
         cv::putText(frame, ss.str(),  cv::Point(bodies[i].x+bodies[i].width+5, bodies[i].y), 2, 0.5, cv::Scalar(30, 200, 255), 1);
         //printf("plot on body, body size %d.........\n", bodies.size());
     }
@@ -476,13 +475,11 @@ void MainWindow::cascadeBodyDetection()
 void MainWindow::cascadeFaceDetection()
 {
     std::vector<cv::Rect> faces;
-    cv::Mat frame_gray;
+    cv::Mat frame_gray_equ;
     std::vector<cv::Point> contour;
+    cv::equalizeHist(frame_gray, frame_gray_equ);
 
-    cv::cvtColor(frame, frame_gray, CV_BGR2GRAY);
-    cv::equalizeHist(frame_gray, frame_gray);
-
-    face_cascade.detectMultiScale(frame_gray, faces, 1.1, 2, 0 | cv::CASCADE_SCALE_IMAGE, cv::Size(30, 30));
+    face_cascade.detectMultiScale(frame_gray_equ, faces, 1.1, 2, 0 | cv::CASCADE_SCALE_IMAGE, cv::Size(30, 30));
 
     for(size_t i=0; i<faces.size(); i++){
         /* diamond shape
@@ -498,7 +495,7 @@ void MainWindow::cascadeFaceDetection()
          */
         cv::rectangle(frame, faces[i], cv::Scalar(0, 255, 0), 2);
         std::stringstream ss;
-        ss<<i;
+        ss<<i+1;
         cv::putText(frame, ss.str(),  cv::Point(faces[i].x+faces[i].width+5, faces[i].y), 2, 0.5, cv::Scalar(30, 200, 0), 1);
         //printf("plot on face, face size %d.........\n", faces.size());
 
@@ -521,9 +518,6 @@ void MainWindow::cascadeFaceDetection()
 
 void MainWindow::HOGPeopleDetection()
 {
-    cv::Mat frame_gray;
-    cv::cvtColor(frame, frame_gray, CV_BGR2GRAY);
-
     std::vector<cv::Rect> peoples;
     cv::HOGDescriptor peopleDetector;
     peopleDetector.setSVMDetector(cv::HOGDescriptor::getDefaultPeopleDetector());
