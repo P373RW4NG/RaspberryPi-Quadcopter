@@ -95,6 +95,7 @@ private:
 
     void cascadeBodyDetection();
     void cascadeFaceDetection();
+    void HOGPeopleDetection();
 
 signals:
     void valChange(int v);
