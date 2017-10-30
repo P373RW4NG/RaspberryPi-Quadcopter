@@ -355,7 +355,8 @@ void MainWindow::recVid()
             cv::flip(frame, frame, 0);
             cv::flip(frame, frame, 1);
             if(idx[3]==1){
-                cascadeBodyDetection();
+                //cascadeBodyDetection();
+                HOGPeopleDetection();
             }
             if(idx[4]==1){
                 cascadeFaceDetection();
@@ -515,6 +516,25 @@ void MainWindow::cascadeFaceDetection()
             printf("plot eyes, eye number %d\n\n\n", eyes.size());
         }
         */
+    }
+}
+
+void MainWindow::HOGPeopleDetection()
+{
+    cv::Mat frame_gray;
+    cv::cvtColor(frame, frame_gray, CV_BGR2GRAY);
+
+    std::vector<cv::Rect> peoples;
+    cv::HOGDescriptor peopleDetector;
+    peopleDetector.setSVMDetector(cv::HOGDescriptor::getDefaultPeopleDetector());
+
+    peopleDetector.detectMultiScale(frame_gray, peoples, 0,
+                                    cv::Size(4, 4), cv::Size(0, 0), 1.1, 2);
+    for(int i=0; i<peoples.size(); i++){
+        cv::rectangle(frame, peoples[i], cv::Scalar(0, 200, 255), 2);
+        std::stringstream ss;
+        ss<<i+1;
+        cv::putText(frame, ss.str(),  cv::Point(peoples[i].x+peoples[i].width+5, peoples[i].y), 2, 0.5, cv::Scalar(30, 200, 255), 1);
     }
 }
 
