@@ -67,7 +67,7 @@ private:
     int p=0;
     int idx[5]={0, 0, 0, 0, 0}; // state: loop, vid, lock, body detection, face detection
     double fps;
-    cv::Mat frame = cv::Mat::zeros(360, 480, CV_8UC3);
+    cv::Mat frame = cv::Mat::zeros(360, 480, CV_8UC3), frame_gray;
     cv::Mat gyroFig = cv::Mat::zeros(130, 130, CV_8UC3);
     QImage Qimg, QimgGyro;
     QTextCursor curs;
