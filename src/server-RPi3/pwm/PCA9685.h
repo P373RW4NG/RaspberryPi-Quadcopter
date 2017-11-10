@@ -118,7 +118,7 @@ public:
     PCA9685();
     void initialize();
     void setPWM(uint8_t num, uint16_t on, uint16_t off);
-    void setPin(uint8_t num, uint16_t val, bool invert=false);
+    //void setPin(uint8_t num, uint16_t val, bool invert=false);
     void getMode1();
     void setMode1(uint8_t num);
     void getPrescale();
