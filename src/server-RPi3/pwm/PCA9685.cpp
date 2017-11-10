@@ -58,11 +58,6 @@ void PCA9685::initialize()
     std::cout<<"PCA9685 initialization successful"<<std::endl;
 }
 
-void PCA9685::setPin(uint8_t num, uint16_t val, bool invert)
-{
-
-}
-
 void PCA9685::getMode1()
 {
     uint8_t* data;
