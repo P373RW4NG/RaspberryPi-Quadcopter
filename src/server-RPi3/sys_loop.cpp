@@ -1,12 +1,9 @@
 #include <array>
 #include <cstdint>
-#ifndef IOSTR_H
-#define IOSTR_H
 #include <stdio.h>
 #include <string>
 #include <iostream>
-#endif
-//#include <sstream>
+
 #include "transmission.h"
 #include "imu/I2Cdev.h"
 #include "imu/MPU6050_6Axis_MotionApps20.h"
